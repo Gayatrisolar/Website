@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maa Gayatri Solar Solutions - MGSS</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        /* Custom Styles */
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f8f9fa; /* Light gray background for better contrast */
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Custom color variables */
+        .bg-primary { background-color: #ff9900; }
+        .text-primary { color: #ff9900; }
+        .border-primary { border-color: #ff9900; }
+        .bg-secondary { background-color: #00b33c; }
+        .text-secondary { color: #00b33c; }
+        .ring-primary { ring-color: #ff9900; }
+
+        /* Smooth scroll for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header on scroll */
+        .header-scrolled {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Icon Glow Effect */
+        .icon-glow {
+            transition: all 0.3s ease-in-out;
+        }
+        .icon-glow-primary:hover {
+            filter: drop-shadow(0 0 12px #ff9900);
+        }
+        .icon-glow-secondary:hover {
+            filter: drop-shadow(0 0 12px #00b33c);
+        }
+
+        /* Video Background - UPDATED FOR MOBILE */
+        #home {
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+        }
+        #bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: -2;
+        }
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: -1;
+        }
+        
+        /* Founder Section Styling */
+        .founder-bg {
+            background: radial-gradient(circle at 0% 0%, rgba(255, 153, 0, 0.1), transparent 35%), 
+                        radial-gradient(circle at 100% 100%, rgba(0, 179, 60, 0.1), transparent 35%), 
+                        #ffffff;
+        }
+        
+        /* Client Video Section - Animated Border */
+        @property --angle {
+          syntax: '<angle>';
+          initial-value: 0deg;
+          inherits: false;
+        }
+        
+        .animated-border-box {
+            --angle: 0deg;
+            --border-size: 4px;
+            --border-color: conic-gradient(from var(--angle), #ffffff00, #ff9900, #00b33c, #ffffff00 50%);
+            position: relative;
+            background-color: #1a1a1a;
+            border-radius: 1.25rem; /* 20px */
+            padding: var(--border-size);
+            background-clip: padding-box;
+            border: var(--border-size) solid transparent;
+            transition: --angle 1.5s linear;
+        }
+        
+        .animated-border-box:hover {
+           --angle: 360deg;
+        }
+        
+        .animated-border-box::before {
+            content: '';
+            position: absolute;
+            inset: calc(-1 * var(--border-size));
+            background: var(--border-color);
+            z-index: -1;
+            border-radius: inherit;
+        }
+
+        /* Testimonial Carousel */
+        .testimonial-carousel-container {
+            overflow: hidden;
+            position: relative;
+        }
+        .testimonial-carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .testimonial-card {
+            flex: 0 0 100%; /* For mobile */
+            box-sizing: border-box;
+        }
+        @media (min-width: 768px) {
+            .testimonial-card {
+                flex: 0 0 50%;
+            }
+        }
+        @media (min-width: 1024px) {
+            .testimonial-card {
+                flex: 0 0 33.333%;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <header id="header" class="bg-white/50 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 transition-shadow duration-300">
+        <div class="container mx-auto px-4 sm:px-6 py-2 flex justify-between items-center">
+            <a href="#home" class="flex items-center space-x-2">
+                <!-- Logo is now responsive -->
+                <img src="https://i.ibb.co/zdGvfbv/Directior.png" alt="Maa Gayatri Solar Solutions Logo" class="h-16 w-16 md:h-20 md:w-20 object-contain">
+            </a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#home" class="text-gray-600 hover:text-primary transition duration-300">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-primary transition duration-300">About Us</a>
+                <a href="#services" class="text-gray-600 hover:text-primary transition duration-300">What We Offer</a>
+                <a href="#founder" class="text-gray-600 hover:text-primary transition duration-300">Founder's Message</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-primary transition duration-300">Testimonials</a>
+                <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 transition duration-300 shadow-sm">Contact Us</a>
+            </nav>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-800 focus:outline-none"><i data-feather="menu" class="w-6 h-6"></i></button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-white/80 backdrop-blur-md">
+            <a href="#home" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-200/50">Home</a>
+            <a href="#about" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-200/50">About Us</a>
+            <a href="#services" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-200/50">What We Offer</a>
+            <a href="#founder" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-200/50">Founder's Message</a>
+            <a href="#testimonials" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-200/50">Testimonials</a>
+            <a href="#contact" class="block py-4 px-6 text-sm bg-primary text-white text-center rounded-b-lg">Contact Us</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Home Section - UPDATED -->
+        <section id="home" class="flex items-center">
+            <video id="bg-video" autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1599540058943-75c156b52a13?q=80&w=2070&auto=format&fit=crop">
+                <source src="https://videos.pexels.com/video-files/857091/857091-hd_1280_720_25fps.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="video-overlay"></div>
+            <!-- Container now has padding-top to avoid header -->
+            <div class="container mx-auto px-6 relative z-10 pt-24">
+                <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
+                    <div class="text-center md:text-left">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-white drop-shadow-lg">
+                            Power Your Future with <span class="text-primary">Solar Energy</span>
+                        </h1>
+                        <p class="mt-6 text-lg text-gray-200 max-w-xl mx-auto md:mx-0 drop-shadow-md">
+                            Harness the sun's power with MGSS. We provide top-tier solar power plant installations for both residential and industrial clients.
+                        </p>
+                        <a href="#services" class="mt-8 inline-block bg-secondary text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-opacity-90 transition duration-300 transform hover:scale-105">
+                            Explore Our Solutions
+                        </a>
+                    </div>
+                    <div class="bg-black/40 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-white/20">
+                        <h2 class="text-2xl font-bold text-center text-secondary mb-2">Solar Savings Calculator</h2>
+                        <p class="text-center text-primary mb-6">See how much you can save!</p>
+                        <div>
+                            <label for="monthlyBill" class="block text-sm font-medium text-gray-200">Your Monthly Electricity Bill (in ₹)</label>
+                            <div class="mt-1 relative rounded-md shadow-sm">
+                                <div class="pointer-events-none absolute inset-y-0 left-0 pl-3 flex items-center"><span class="text-gray-400 sm:text-sm">₹</span></div>
+                                <input type="number" name="monthlyBill" id="monthlyBill" class="block w-full rounded-md border-gray-500 bg-white/20 text-white pl-7 pr-12 focus:border-primary focus:ring-primary placeholder:text-gray-400" placeholder="e.g., 2500">
+                            </div>
+                        </div>
+                        <button id="calculateBtn" class="mt-6 w-full bg-primary text-white font-bold py-3 px-4 rounded-lg hover:bg-opacity-90 transition duration-300 flex items-center justify-center space-x-2"><i data-feather="sun" class="w-5 h-5"></i><span>Calculate Savings</span></button>
+                        <div id="calculatorResult" class="mt-6 text-center hidden">
+                            <div class="bg-green-900/30 p-6 rounded-lg border border-secondary">
+                                <p class="text-sm text-secondary font-semibold">ESTIMATED REQUIREMENT & SAVINGS</p>
+                                <p class="mt-2 text-xl md:text-2xl font-bold text-white">
+                                    You need a <span id="plantCapacity" class="text-secondary">0.0</span> kW Plant
+                                </p>
+                                <p class="mt-2 text-gray-200">
+                                    Save approx. <span id="totalSavings" class="font-bold text-white">₹0</span> over 30 years!
+                                </p>
+                            </div>
+                             <p class="text-xs text-gray-400 mt-4">*This is an estimate. Actual values may vary.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1">
+                        <h2 class="text-3xl md:text-4xl font-bold text-gray-900">About <span class="text-primary">Maa Gayatri Solar Solutions</span></h2>
+                        <p class="mt-4 text-gray-600">Maa Gayatri Solar Solutions (MGSS) is a premier provider of sustainable energy solutions. Since our inception, we have been dedicated to illuminating homes and powering industries with clean, reliable, and cost-effective solar energy.</p>
+                        <p class="mt-4 text-gray-600">Our mission is to accelerate the transition to renewable energy by making solar accessible to everyone. We handle everything from consultation and design to installation and maintenance, ensuring a seamless experience for our clients. We believe in quality, integrity, and a brighter, greener future for generations to come.</p>
+                        <div class="mt-8 flex flex-col sm:flex-row space-y-6 sm:space-y-0 sm:space-x-8">
+                            <div class="flex items-center space-x-3">
+                                <div class="bg-green-100 p-3 rounded-full"><i data-feather="award" class="w-6 h-6 text-secondary"></i></div>
+                                <div><p class="font-bold text-gray-900">Quality Assured</p><p class="text-sm text-gray-500">Using top-tier components.</p></div>
+                            </div>
+                            <div class="flex items-center space-x-3">
+                                <div class="bg-orange-100 p-3 rounded-full"><i data-feather="users" class="w-6 h-6 text-primary"></i></div>
+                                <div><p class="font-bold text-gray-900">Expert Team</p><p class="text-sm text-gray-500">Certified professionals.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="order-1 md:order-2"><img src="https://images.pexels.com/photos/8853500/pexels-photo-8853500.jpeg" alt="Solar panels on a modern house roof" class="rounded-2xl shadow-xl w-full h-auto object-cover"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section - UPDATED -->
+        <section id="services" class="py-16 md:py-24 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">What We Offer</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-600">Tailored solar solutions designed to meet your specific energy needs.</p>
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group">
+                        <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center icon-glow icon-glow-primary group-hover:scale-110 mx-auto md:mx-0"><i data-feather="home" class="w-8 h-8"></i></div>
+                        <h3 class="mt-6 text-xl font-bold text-gray-900 text-center md:text-left">Residential Solar</h3><p class="mt-2 text-gray-600 text-justify">Lower your electricity bills and increase your home's value with a custom solar panel system designed for your rooftop.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group">
+                        <div class="bg-secondary text-white w-16 h-16 rounded-full flex items-center justify-center icon-glow icon-glow-secondary group-hover:scale-110 mx-auto md:mx-0"><i data-feather="briefcase" class="w-8 h-8"></i></div>
+                        <h3 class="mt-6 text-xl font-bold text-gray-900 text-center md:text-left">Industrial Projects</h3><p class="mt-2 text-gray-600 text-justify">Power your business operations sustainably. We provide large-scale solar solutions for factories, warehouses, and commercial buildings.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group">
+                       <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center icon-glow icon-glow-primary group-hover:scale-110 mx-auto md:mx-0"><i data-feather="grid" class="w-8 h-8"></i></div>
+                        <h3 class="mt-6 text-xl font-bold text-gray-900 text-center md:text-left">On-Grid & Off-Grid</h3><p class="mt-2 text-gray-600 text-justify">Whether you want to sell excess power back to the grid or achieve complete energy independence, we have the right system for you.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="founder" class="py-16 md:py-24 bg-gray-100">
+            <div class="container mx-auto px-6">
+                <div class="founder-bg rounded-2xl shadow-xl overflow-hidden">
+                    <div class="grid md:grid-cols-5 gap-0 md:gap-8 items-center">
+                        <div class="md:col-span-2">
+                             <img src="https://images.pexels.com/photos/4064827/pexels-photo-4064827.jpeg" alt="Founder of MGSS, Rajneesh Kulshreshtha" class="w-full h-full object-cover min-h-[300px] md:min-h-[450px]">
+                        </div>
+                        <div class="md:col-span-3 p-8 md:p-12 text-center md:text-left">
+                            <h2 class="text-3xl md:text-4xl font-bold text-gray-900">Founder's Message</h2>
+                            <div class="relative">
+                                <i data-feather="message-square" class="absolute -top-4 -left-4 w-16 h-16 text-gray-200/50"></i>
+                                <blockquote class="mt-4 text-lg text-gray-700 italic relative z-10">
+                                   "Our vision at MGSS is not just about installing solar panels; it's about empowering communities with a sustainable choice. We are committed to delivering excellence and integrity in every project, paving the way for a cleaner, self-reliant India."
+                               </blockquote>
+                            </div>
+                            <p class="mt-6 font-bold text-xl text-primary">Rajneesh Kulshreshtha</p>
+                            <p class="text-gray-500">Founder, Maa Gayatri Solar Solutions</p>
+                            <p class="text-gray-500 text-sm mt-1">Mobile: +91 99999 88888</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="client-video" class="py-16 md:py-24 bg-gray-50">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900">See What Our Clients Have to Say</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-600">Watch a short video from one of our happy customers.</p>
+                 <div class="mt-12 max-w-4xl mx-auto">
+                    <div class="animated-border-box">
+                        <div class="aspect-video">
+                            <iframe src="https://www.youtube.com/embed/DS3PenJxLs8?si=lJzoF4JlMw7pOd3M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="rounded-xl w-full h-full"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="py-16 md:py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center">Happy Clients, Bright Homes</h2>
+                <p class="mt-4 max-w-2xl mx-auto text-gray-600 text-center">Here's what our satisfied customers think about their solar journey with us.</p>
+                <div id="testimonial-carousel-wrapper" class="relative mt-12">
+                    <div class="testimonial-carousel-container">
+                        <div id="testimonial-carousel" class="testimonial-carousel">
+                            <!-- Testimonial Cards will be injected here by JS -->
+                        </div>
+                    </div>
+                    <button id="prevBtn" class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-md hover:bg-white transition hidden md:block"><i data-feather="chevron-left" class="text-gray-600"></i></button>
+                    <button id="nextBtn" class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-md hover:bg-white transition hidden md:block"><i data-feather="chevron-right" class="text-gray-600"></i></button>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="py-16 md:py-24 bg-gray-50">
+            <div class="container mx-auto px-6">
+                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 text-center">Get In Touch</h2>
+                 <p class="mt-4 max-w-2xl mx-auto text-gray-600 text-center">Ready to go solar? Contact us today for a free consultation.</p>
+                 <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-1 space-y-8">
+                        <div class="flex items-start space-x-4 group"><div class="bg-orange-100 p-3 rounded-full icon-glow icon-glow-primary group-hover:scale-110"><i data-feather="mail" class="w-6 h-6 text-primary"></i></div><div><h3 class="text-lg font-semibold text-gray-900">Email Us</h3><p class="text-gray-600">Reach out for inquiries and quotes.</p><a href="mailto:contact@mgssolar.com" class="text-primary hover:underline">contact@mgssolar.com</a></div></div>
+                        <div class="flex items-start space-x-4 group"><div class="bg-green-100 p-3 rounded-full icon-glow icon-glow-secondary group-hover:scale-110"><i data-feather="map-pin" class="w-6 h-6 text-secondary"></i></div><div><h3 class="text-lg font-semibold text-gray-900">Headquarters</h3><p class="text-gray-600">123 Solar Avenue, Green Enclave,<br>Jaipur, Rajasthan, 302012</p></div></div>
+                        <div class="flex items-start space-x-4 group"><div class="bg-orange-100 p-3 rounded-full icon-glow icon-glow-primary group-hover:scale-110"><i data-feather="phone-call" class="w-6 h-6 text-primary"></i></div><div><h3 class="text-lg font-semibold text-gray-900">Call Us</h3><p class="text-gray-600"><span class="font-medium">Sales:</span> Mr. Vikas Sharma, +91-9876543210</p><p class="text-gray-600"><span class="font-medium">Support:</span> Ms. Anjali Gupta, +91-9876543211</p><p class="text-gray-600"><span class="font-medium">Projects:</span> Mr. Rohit Meena, +91-9876543212</p></div></div>
+                    </div>
+                     <div class="lg:col-span-2 bg-white p-8 rounded-2xl shadow-lg">
+                        <form action="#" method="POST"><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div><label for="name" class="block text-sm font-medium text-gray-700">Full Name</label><input type="text" id="name" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"></div><div><label for="email" class="block text-sm font-medium text-gray-700">Email Address</label><input type="email" id="email" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"></div></div><div class="mt-6"><label for="phone" class="block text-sm font-medium text-gray-700">Phone Number</label><input type="tel" id="phone" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"></div><div class="mt-6"><label for="message" class="block text-sm font-medium text-gray-700">Message</label><textarea id="message" rows="4" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary"></textarea></div><div class="mt-6"><button type="submit" class="w-full bg-secondary text-white font-bold py-3 px-4 rounded-lg hover:bg-opacity-90 transition duration-300">Send Message</button></div></form>
+                     </div>
+                 </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-8"><div class="grid md:grid-cols-3 gap-8"><div><h3 class="font-bold text-lg">Maa Gayatri Solar Solutions</h3><p class="mt-2 text-gray-400 text-sm">Your trusted partner for a brighter, sustainable future.</p></div><div class="md:text-center"><h3 class="font-bold text-lg">Quick Links</h3><ul class="mt-2 space-y-1 text-sm"><li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li><li><a href="#services" class="text-gray-400 hover:text-white">Services</a></li><li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li></ul></div><div class="md:text-right"><h3 class="font-bold text-lg">Connect With Us</h3><div class="flex mt-2 space-x-4 md:justify-end"><a href="#" class="text-gray-400 hover:text-white"><i data-feather="facebook"></i></a><a href="#" class="text-gray-400 hover:text-white"><i data-feather="twitter"></i></a><a href="#" class="text-gray-400 hover:text-white"><i data-feather="instagram"></i></a><a href="#" class="text-gray-400 hover:text-white"><i data-feather="linkedin"></i></a></div></div></div><div class="mt-8 border-t border-gray-700 pt-6 text-center text-sm text-gray-500">© 2024 Maa Gayatri Solar Solutions. All Rights Reserved.</div></div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            feather.replace();
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const navLinks = mobileMenu.querySelectorAll('a');
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            navLinks.forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+            // --- Sticky Header Shadow ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('header-scrolled', window.scrollY > 10);
+            });
+            
+            // --- Number Counter Animation ---
+            function animateValue(obj, start, end, duration) {
+                let startTimestamp = null;
+                const step = (timestamp) => {
+                    if (!startTimestamp) startTimestamp = timestamp;
+                    const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                    const easedProgress = progress < 0.5 ? 4 * progress * progress * progress : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                    let currentValue = Math.floor(easedProgress * (end - start) + start);
+                    
+                    if (obj.id === 'totalSavings') {
+                        obj.innerHTML = '₹' + currentValue.toLocaleString('en-IN');
+                    } else {
+                        obj.innerHTML = currentValue.toFixed(1);
+                    }
+
+                    if (progress < 1) {
+                        window.requestAnimationFrame(step);
+                    }
+                };
+                window.requestAnimationFrame(step);
+            }
+
+            // --- Solar Calculator Logic ---
+            const calculateBtn = document.getElementById('calculateBtn');
+            const monthlyBillInput = document.getElementById('monthlyBill');
+            const calculatorResultDiv = document.getElementById('calculatorResult');
+            const plantCapacitySpan = document.getElementById('plantCapacity');
+            const totalSavingsSpan = document.getElementById('totalSavings');
+
+            calculateBtn.addEventListener('click', () => {
+                const monthlyBill = parseFloat(monthlyBillInput.value);
+                if (isNaN(monthlyBill) || monthlyBill <= 0) {
+                    alert('Please enter a valid monthly bill amount.');
+                    return;
+                }
+                const costPerUnit = 8, unitsPerDayPerKw = 4, costPerKw = 60000, lifeOfPlantYears = 30;
+                const annualBill = monthlyBill * 12;
+                const unitsPerYear = annualBill / costPerUnit;
+                const requiredCapacity = Math.ceil((unitsPerYear / 365 / unitsPerDayPerKw) * 2) / 2;
+                const estimatedPlantCost = requiredCapacity * costPerKw;
+                const totalEnergySavings = annualBill * lifeOfPlantYears;
+                const netSavings = totalEnergySavings - estimatedPlantCost;
+                
+                calculatorResultDiv.classList.remove('hidden');
+                animateValue(plantCapacitySpan, 0, requiredCapacity, 1500);
+                animateValue(totalSavingsSpan, 0, netSavings, 1800);
+            });
+
+            // --- Testimonial Carousel Logic ---
+            const testimonials = [
+                { name: 'Ankit Sharma', location: 'Residential Client, Jaipur', text: '"The entire process was smooth, from the initial consultation to the final installation. My electricity bills have dropped to nearly zero. Highly recommended!"', img: 'https://randomuser.me/api/portraits/men/32.jpg' },
+                { name: 'Priya Singh', location: 'Industrial Client, Delhi', text: '"MG Solar Solutions delivered a high-capacity plant for our factory ahead of schedule. Their professionalism and technical expertise are commendable."', img: 'https://randomuser.me/api/portraits/women/44.jpg' },
+                { name: 'Ramesh Verma', location: 'Off-Grid Client, Alwar', text: '"A fantastic team that is passionate about renewable energy. They answered all my questions and designed the perfect off-grid system for my farmhouse."', img: 'https://randomuser.me/api/portraits/men/56.jpg' },
+                { name: 'Sunita Devi', location: 'Residential Client, Gurgaon', text: '"I was impressed by their customer service. The team was patient and guided me through the subsidy process. Very happy with the result."', img: 'https://randomuser.me/api/portraits/women/68.jpg' },
+                { name: 'Vikram Rathore', location: 'Commercial Client, Noida', text: '"Our return on investment has been fantastic. The quality of the panels and the installation work is top-notch. A truly professional company."', img: 'https://randomuser.me/api/portraits/men/76.jpg' }
+            ];
+            
+            const carousel = document.getElementById('testimonial-carousel');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const wrapper = document.getElementById('testimonial-carousel-wrapper');
+            let currentIndex = 0;
+            let autoScrollInterval;
+
+            function renderTestimonials() {
+                if (!carousel) return;
+                carousel.innerHTML = testimonials.map(t => `
+                    <div class="testimonial-card p-4">
+                        <div class="bg-gray-50 p-8 rounded-xl shadow-lg h-full flex flex-col justify-between">
+                            <p class="text-gray-600 italic">“${t.text}”</p>
+                            <div class="mt-6 flex items-center space-x-4">
+                                <img class="w-14 h-14 rounded-full" src="${t.img}" alt="Photo of ${t.name}">
+                                <div>
+                                    <p class="font-bold text-gray-900">${t.name}</p>
+                                    <p class="text-sm text-gray-500">${t.location}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+            
+            function updateCarousel() {
+                if (!carousel || !carousel.querySelector('.testimonial-card')) return;
+                const cardWidth = carousel.querySelector('.testimonial-card').offsetWidth;
+                // THIS LINE IS FIXED
+                carousel.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+            }
+
+            function showNext() {
+                currentIndex++;
+                if (currentIndex >= testimonials.length) {
+                    currentIndex = 0;
+                }
+                updateCarousel();
+            }
+
+            function showPrev() {
+                currentIndex--;
+                if (currentIndex < 0) {
+                    currentIndex = testimonials.length - 1;
+                }
+                updateCarousel();
+            }
+
+            function startAutoScroll() {
+                stopAutoScroll();
+                autoScrollInterval = setInterval(showNext, 5000); // Change slide every 5 seconds
+            }
+
+            function stopAutoScroll() {
+                clearInterval(autoScrollInterval);
+            }
+
+            renderTestimonials();
+            if (prevBtn && nextBtn && wrapper) {
+                nextBtn.addEventListener('click', showNext);
+                prevBtn.addEventListener('click', showPrev);
+                wrapper.addEventListener('mouseenter', stopAutoScroll);
+                wrapper.addEventListener('mouseleave', startAutoScroll);
+            }
+            window.addEventListener('resize', updateCarousel);
+            startAutoScroll();
+        });
+    </script>
+</body>
+</html>
