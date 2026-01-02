@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Maa Gayatri Solar Solutions</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <style>
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #f8f9fa;
+        }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
+        .bg-primary { background-color: #ff9900; }
+        .text-primary { color: #ff9900; }
+        .bg-secondary { background-color: #00b33c; }
+        .text-secondary { color: #00b33c; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 sticky top-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold text-gray-800">MGSS</a>
+            <a href="index.html" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition">Back to Home</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold text-gray-800 mb-12 text-center">Get In Touch</h1>
+
+        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            
+            <!-- Contact Information -->
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Contact Information</h2>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <i data-feather="mail" class="text-primary mr-4 mt-1"></i>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-1">Email Us</h3>
+                            <a href="mailto:gayatrisolars@gmail.com" class="text-gray-600 hover:text-primary">gayatrisolars@gmail.com</a>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <i data-feather="map-pin" class="text-primary mr-4 mt-1"></i>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-1">Headquarters</h3>
+                            <p class="text-gray-600">15/171 Malviya Nagar<br>Jaipur, Rajasthan</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start">
+                        <i data-feather="phone" class="text-primary mr-4 mt-1"></i>
+                        <div>
+                            <h3 class="font-semibold text-gray-800 mb-1">Call Us</h3>
+                            <p class="text-gray-600">
+                                <strong>Rajneesh:</strong> <a href="tel:+919785400270" class="hover:text-primary">+91 9785400270</a><br>
+                                <strong>Sales:</strong> <a href="tel:+919024032963" class="hover:text-primary">+91 9024032963</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-8 border-t border-gray-200">
+                    <h3 class="font-semibold text-gray-800 mb-3">Business Hours</h3>
+                    <p class="text-gray-600">Monday - Saturday: 9:00 AM - 6:00 PM<br>Sunday: Closed</p>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="bg-white rounded-lg shadow-md p-8">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Send us a Message</h2>
+                
+                <form action="https://formspree.io/f/mbdlgnqw" method="POST" class="space-y-4">
+                    
+                    <div>
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Full Name *</label>
+                        <input type="text" id="name" name="name" required 
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+
+                    <div>
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Email Address *</label>
+                        <input type="email" id="email" name="email" required 
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+
+                    <div>
+                        <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" 
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+
+                    <div>
+                        <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                        <input type="text" id="subject" name="subject" 
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                    </div>
+
+                    <div>
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Message *</label>
+                        <textarea id="message" name="message" rows="4" required 
+                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
+                    </div>
+
+                    <div class="flex items-start">
+                        <input type="checkbox" id="consent" name="consent" required 
+                               class="mt-1 mr-3 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
+                        <label for="consent" class="text-sm text-gray-600">
+                            By submitting this form, you agree to the <a href="privacy-policy.html" class="text-primary hover:underline">Privacy Policy</a>. 
+                            You hereby grant us permission to contact you via SMS, WhatsApp, RCS, Email, and any other channel. *
+                        </label>
+                    </div>
+
+                    <button type="submit" 
+                            class="w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-opacity-90 transition">
+                        Send Message
+                    </button>
+                </form>
+
+                <p id="form-status" class="mt-4 text-center text-sm"></p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-4">
+                <a href="index.html" class="text-gray-300 hover:text-white mx-3">Home</a>
+                <a href="terms-and-conditions.html" class="text-gray-300 hover:text-white mx-3">Terms & Conditions</a>
+                <a href="privacy-policy.html" class="text-gray-300 hover:text-white mx-3">Privacy Policy</a>
+                <a href="contact.html" class="text-gray-300 hover:text-white mx-3">Contact Us</a>
+            </div>
+            <p class="text-gray-400 text-sm">© 2026 Maa Gayatri Solar Solutions. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+
+</body>
+</html>
