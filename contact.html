@@ -1,157 +1,351 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Maa Gayatri Solar Solutions</title>
-    
+    <title>Contact Us - MGSS</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
-    
+
+    <!-- Tailwind Configuration (Matching index.html) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#fff9eb',
+                            100: '#ffefc6',
+                            200: '#ffe088',
+                            300: '#ffcb4a',
+                            400: '#ffb11b',
+                            500: '#ff9900',
+                            600: '#e27500',
+                            700: '#bb5102',
+                            800: '#983f08',
+                            900: '#7c350b',
+                        },
+                        secondary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#00b33c',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        slate: {
+                            850: '#152033',
+                            900: '#0f172a',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
         body {
-            font-family: 'Lato', sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
-        .bg-primary { background-color: #ff9900; }
-        .text-primary { color: #ff9900; }
-        .bg-secondary { background-color: #00b33c; }
-        .text-secondary { color: #00b33c; }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f8fafc;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        p {
+            text-align: justify;
+        }
     </style>
 </head>
-<body>
-    <!-- Header -->
-    <header class="bg-white shadow-md py-4 sticky top-0 z-50">
-        <div class="container mx-auto px-4 flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-gray-800">MGSS</a>
-            <a href="index.html" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-opacity-90 transition">Back to Home</a>
+
+<body
+    class="bg-slate-50 text-slate-800 antialiased selection:bg-primary-200 selection:text-primary-900 flex flex-col min-h-screen">
+
+    <!-- HEADER -->
+    <header id="header" class="absolute top-0 left-0 right-0 z-50 py-6 pointer-events-none">
+        <div class="container mx-auto px-4 flex justify-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex flex-col items-center group pointer-events-auto">
+                <img src="https://i.ibb.co/zdGvfbv/Directior.png" alt="MGSS Logo"
+                    class="h-16 w-16 md:h-20 md:w-20 object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-300">
+                <div class="mt-2 text-center text-white drop-shadow-md">
+                    <h1 class="text-xl font-bold leading-tight tracking-tight">MGSS</h1>
+                    <p class="text-[10px] uppercase tracking-widest text-primary-400 font-semibold">Solar Solutions</p>
+                </div>
+            </a>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="container mx-auto px-4 py-12">
-        <h1 class="text-4xl font-bold text-gray-800 mb-12 text-center">Get In Touch</h1>
+    <!-- PAGE HEADER -->
+    <div class="bg-slate-900 pt-32 pb-16 relative overflow-hidden flex-shrink-0">
+        <!-- Abstract glowing orbs -->
+        <div
+            class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-primary-900/40 rounded-full blur-3xl z-0 pointer-events-none">
+        </div>
+        <div
+            class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 bg-secondary-900/30 rounded-full blur-3xl z-0 pointer-events-none">
+        </div>
 
-        <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            
-            <!-- Contact Information -->
-            <div class="bg-white rounded-lg shadow-md p-8">
-                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Contact Information</h2>
-                
-                <div class="space-y-6">
-                    <div class="flex items-start">
-                        <i data-feather="mail" class="text-primary mr-4 mt-1"></i>
-                        <div>
-                            <h3 class="font-semibold text-gray-800 mb-1">Email Us</h3>
-                            <a href="mailto:gayatrisolars@gmail.com" class="text-gray-600 hover:text-primary">gayatrisolars@gmail.com</a>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white tracking-tight mb-4">Let's Connect
+            </h1>
+            <p class="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto font-medium">Ready to transition to clean,
+                sustainable energy? Our experts are here to help you every step of the way.</p>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="flex-grow container mx-auto px-4 sm:px-6 lg:px-8 py-16 -mt-10 relative z-20">
+        <div class="grid lg:grid-cols-12 gap-8 lg:gap-12 max-w-7xl mx-auto">
+
+            <!-- CONTACT INFORMATION -->
+            <div class="lg:col-span-5 space-y-6">
+                <!-- Direct Contact Card -->
+                <div
+                    class="bg-white rounded-3xl p-8 shadow-xl shadow-slate-200/50 border border-slate-100 hover:border-primary-100 transition-colors group">
+                    <h2 class="text-2xl font-bold text-slate-900 mb-8">Get In Touch</h2>
+
+                    <div class="space-y-6">
+                        <!-- Phone -->
+                        <div class="flex items-start">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-primary-50 text-primary-600 flex items-center justify-center flex-shrink-0 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300">
+                                <i data-feather="phone-call" class="w-5 h-5"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Call Us</h3>
+                                <div class="space-y-1">
+                                    <p class="text-slate-700 font-medium"><span
+                                            class="text-slate-900 font-semibold mr-2">Rajneesh:</span> <a
+                                            href="tel:+919785400270"
+                                            class="hover:text-primary-600 transition-colors">+91 97854 00270</a></p>
+                                    <p class="text-slate-700 font-medium"><span
+                                            class="text-slate-900 font-semibold mr-2">Sales Team:</span> <a
+                                            href="tel:+919024032963"
+                                            class="hover:text-primary-600 transition-colors">+91 90240 32963</a></p>
+                                </div>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="flex items-start">
-                        <i data-feather="map-pin" class="text-primary mr-4 mt-1"></i>
-                        <div>
-                            <h3 class="font-semibold text-gray-800 mb-1">Headquarters</h3>
-                            <p class="text-gray-600">15/171 Malviya Nagar<br>Jaipur, Rajasthan</p>
+                        <!-- Email -->
+                        <div class="flex items-start">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-secondary-50 text-secondary-600 flex items-center justify-center flex-shrink-0 group-hover:bg-secondary-600 group-hover:text-white transition-colors duration-300">
+                                <i data-feather="mail" class="w-5 h-5"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Email Us</h3>
+                                <a href="mailto:gayatrisolars@gmail.com"
+                                    class="text-slate-900 font-semibold hover:text-secondary-600 transition-colors break-all">gayatrisolars@gmail.com</a>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="flex items-start">
-                        <i data-feather="phone" class="text-primary mr-4 mt-1"></i>
-                        <div>
-                            <h3 class="font-semibold text-gray-800 mb-1">Call Us</h3>
-                            <p class="text-gray-600">
-                                <strong>Rajneesh:</strong> <a href="tel:+919785400270" class="hover:text-primary">+91 9785400270</a><br>
-                                <strong>Sales:</strong> <a href="tel:+919024032963" class="hover:text-primary">+91 9024032963</a>
-                            </p>
+                        <!-- Address -->
+                        <div class="flex items-start">
+                            <div
+                                class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-600 flex items-center justify-center flex-shrink-0 group-hover:bg-slate-800 group-hover:text-white transition-colors duration-300">
+                                <i data-feather="map-pin" class="w-5 h-5"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-sm font-bold text-slate-400 uppercase tracking-wider mb-1">Headquarters
+                                </h3>
+                                <p class="text-slate-900 font-semibold leading-snug">15/171 Malviya Nagar<br>Jaipur,
+                                    Rajasthan</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-8 pt-8 border-t border-gray-200">
-                    <h3 class="font-semibold text-gray-800 mb-3">Business Hours</h3>
-                    <p class="text-gray-600">Monday - Saturday: 9:00 AM - 6:00 PM<br>Sunday: Closed</p>
+                <!-- Business Hours Card -->
+                <div class="bg-primary-600 rounded-3xl p-8 shadow-xl text-white relative overflow-hidden">
+                    <div class="absolute top-0 right-0 -mr-10 -mt-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+                    <div class="relative z-10">
+                        <div class="flex items-center mb-4">
+                            <i data-feather="clock" class="w-6 h-6 mr-3 text-primary-200"></i>
+                            <h2 class="text-xl font-bold">Business Hours</h2>
+                        </div>
+                        <ul class="space-y-3 font-medium text-primary-50">
+                            <li class="flex justify-between border-b border-white/10 pb-2">
+                                <span>Monday - Saturday</span>
+                                <span class="font-bold text-white">9:00 AM - 6:00 PM</span>
+                            </li>
+                            <li class="flex justify-between pt-1">
+                                <span>Sunday</span>
+                                <span class="font-bold text-white">Closed</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
 
-            <!-- Contact Form -->
-            <div class="bg-white rounded-lg shadow-md p-8">
-                <h2 class="text-2xl font-semibold text-gray-800 mb-6">Send us a Message</h2>
-                
-                <form action="https://formspree.io/f/mbdlgnqw" method="POST" class="space-y-4">
-                    
-                    <div>
-                        <label for="name" class="block text-gray-700 font-medium mb-2">Full Name *</label>
-                        <input type="text" id="name" name="name" required 
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+            <!-- CONTACT FORM -->
+            <div class="lg:col-span-7">
+                <div class="bg-white rounded-3xl p-8 sm:p-10 shadow-2xl shadow-slate-200/50 border border-slate-100">
+                    <div class="mb-8">
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-2">Send us a Message</h2>
+                        <p class="text-slate-500 font-medium">Fill out the form below and our team will get back to you
+                            within 24 hours.</p>
                     </div>
 
-                    <div>
-                        <label for="email" class="block text-gray-700 font-medium mb-2">Email Address *</label>
-                        <input type="email" id="email" name="email" required 
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                    </div>
+                    <form action="https://formspree.io/f/mbdlgnqw" method="POST" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Name -->
+                            <div class="space-y-2">
+                                <label for="name" class="block text-sm font-bold text-slate-700">Full Name *</label>
+                                <input type="text" id="name" name="name" required
+                                    class="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all text-slate-900 font-medium placeholder-slate-400"
+                                    placeholder="Your name">
+                            </div>
 
-                    <div>
-                        <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
-                        <input type="tel" id="phone" name="phone" 
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                    </div>
+                            <!-- Email -->
+                            <div class="space-y-2">
+                                <label for="email" class="block text-sm font-bold text-slate-700">Email Address
+                                    *</label>
+                                <input type="email" id="email" name="email" required
+                                    class="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all text-slate-900 font-medium placeholder-slate-400"
+                                    placeholder="email address">
+                            </div>
+                        </div>
 
-                    <div>
-                        <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
-                        <input type="text" id="subject" name="subject" 
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
-                    </div>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <!-- Phone -->
+                            <div class="space-y-2">
+                                <label for="phone" class="block text-sm font-bold text-slate-700">Phone Number</label>
+                                <input type="tel" id="phone" name="phone"
+                                    class="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all text-slate-900 font-medium placeholder-slate-400"
+                                    placeholder="9000000000">
+                            </div>
 
-                    <div>
-                        <label for="message" class="block text-gray-700 font-medium mb-2">Message *</label>
-                        <textarea id="message" name="message" rows="4" required 
-                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary resize-none"></textarea>
-                    </div>
+                            <!-- Subject -->
+                            <div class="space-y-2">
+                                <label for="subject" class="block text-sm font-bold text-slate-700">Subject</label>
+                                <select id="subject" name="subject"
+                                    class="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all text-slate-900 font-medium appearance-none">
+                                    <option value="" disabled selected>Select an option</option>
+                                    <option value="Residential Solar">Residential Solar</option>
+                                    <option value="Commercial Solar">Commercial Solar</option>
+                                    <option value="General Inquiry">General Inquiry</option>
+                                </select>
+                            </div>
+                        </div>
 
-                    <div class="flex items-start">
-                        <input type="checkbox" id="consent" name="consent" required 
-                               class="mt-1 mr-3 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded">
-                        <label for="consent" class="text-sm text-gray-600">
-                            By submitting this form, you agree to the <a href="privacy-policy.html" class="text-primary hover:underline">Privacy Policy</a>. 
-                            You hereby grant us permission to contact you via SMS, WhatsApp, RCS, Email, and any other channel. *
-                        </label>
-                    </div>
+                        <!-- Message -->
+                        <div class="space-y-2">
+                            <label for="message" class="block text-sm font-bold text-slate-700">Message *</label>
+                            <textarea id="message" name="message" rows="4" required
+                                class="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all text-slate-900 font-medium placeholder-slate-400 resize-y"
+                                placeholder="Tell us about your energy needs..."></textarea>
+                        </div>
 
-                    <button type="submit" 
-                            class="w-full bg-primary text-white font-semibold py-3 rounded-lg hover:bg-opacity-90 transition">
-                        Send Message
-                    </button>
-                </form>
+                        <!-- Consent -->
+                        <div class="flex items-start bg-slate-50 p-4 rounded-xl border border-slate-100">
+                            <div class="flex items-center h-5">
+                                <input type="checkbox" id="consent" name="consent" required
+                                    class="w-5 h-5 text-primary-600 bg-white border-slate-300 rounded focus:ring-primary-500 focus:ring-2 cursor-pointer transition-colors">
+                            </div>
+                            <div class="ml-3 text-sm">
+                                <label for="consent" class="font-medium text-slate-600 cursor-pointer">
+                                    By submitting this form, you agree to our <a href="privacy-policy.html"
+                                        class="text-primary-600 hover:text-primary-700 hover:underline font-bold transition-colors">Privacy
+                                        Policy</a>. You grant us permission to contact you via SMS, WhatsApp, Email, or
+                                    phone regarding your inquiry. *
+                                </label>
+                            </div>
+                        </div>
 
-                <p id="form-status" class="mt-4 text-center text-sm"></p>
+                        <!-- Submit -->
+                        <button type="submit"
+                            class="w-full flex items-center justify-center px-8 py-4 text-base font-bold text-white bg-slate-900 hover:bg-slate-800 rounded-xl shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-300 group">
+                            Send Message <i data-feather="send"
+                                class="w-4 h-4 ml-2 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                        </button>
+                    </form>
+                </div>
             </div>
-
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-12">
-        <div class="container mx-auto px-4 text-center">
-            <div class="mb-4">
-                <a href="index.html" class="text-gray-300 hover:text-white mx-3">Home</a>
-                <a href="terms-and-conditions.html" class="text-gray-300 hover:text-white mx-3">Terms & Conditions</a>
-                <a href="privacy-policy.html" class="text-gray-300 hover:text-white mx-3">Privacy Policy</a>
-                <a href="contact.html" class="text-gray-300 hover:text-white mx-3">Contact Us</a>
+    <!-- PREMIUM FOOTER -->
+    <footer class="bg-slate-900 text-slate-300 pt-16 pb-8 border-t border-slate-800 mt-auto">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8 gap-6">
+                <!-- Brand -->
+                <a href="index.html" class="flex items-center space-x-2">
+                    <div class="bg-white p-2 rounded-xl">
+                        <img src="https://i.ibb.co/zdGvfbv/Directior.png" alt="Logo" class="h-8 w-8 object-contain">
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-white leading-tight">MGSS</h2>
+                    </div>
+                </a>
+
+                <!-- Footer Links -->
+                <div class="flex flex-wrap justify-center gap-6 text-sm font-medium">
+                    <a href="index.html" class="hover:text-white transition-colors">Home</a>
+                    <a href="terms-and-conditions.html" class="hover:text-white transition-colors">Terms &
+                        Conditions</a>
+                    <a href="privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
+                    <a href="contact.html" class="text-primary-400 font-bold">Contact Us</a>
+                </div>
             </div>
-            <p class="text-gray-400 text-sm">© 2026 Maa Gayatri Solar Solutions. All rights reserved.</p>
+
+            <div
+                class="border-t border-slate-800 pt-8 text-center text-sm font-medium text-slate-500 flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2026 Maa Gayatri Solar Solutions. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Designed for a Sustainable Future.</p>
+            </div>
         </div>
     </footer>
 
+    <!-- INTERACTIVITY SCRIPT -->
     <script>
-        feather.replace();
-    </script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Feather Icons
+            feather.replace();
 
+            // Mobile Menu Toggle removed
+        });
+    </script>
 </body>
+
 </html>

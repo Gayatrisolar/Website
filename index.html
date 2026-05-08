@@ -1,430 +1,708 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maa Gayatri Solar Solutions - MGSS</title>
-    
+    <title>MGSS</title>
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
+    <!-- Google Fonts: Plus Jakarta Sans for a premium, modern look -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            50: '#fff9eb',
+                            100: '#ffefc6',
+                            200: '#ffe088',
+                            300: '#ffcb4a',
+                            400: '#ffb11b',
+                            500: '#ff9900', // Brand Base
+                            600: '#e27500',
+                            700: '#bb5102',
+                            800: '#983f08',
+                            900: '#7c350b',
+                        },
+                        secondary: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            200: '#bbf7d0',
+                            300: '#86efac',
+                            400: '#4ade80',
+                            500: '#22c55e',
+                            600: '#00b33c', // Brand Base
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                        },
+                        slate: {
+                            850: '#152033',
+                            900: '#0f172a',
+                        }
+                    },
+                    animation: {
+                        'blob': 'blob 7s infinite',
+                    },
+                    keyframes: {
+                        blob: {
+                            '0%': { transform: 'translate(0px, 0px) scale(1)' },
+                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '100%': { transform: 'translate(0px, 0px) scale(1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
     <style>
         body {
-            font-family: 'Lato', sans-serif;
-            background-color: #f8f9fa;
-        }
-        h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', sans-serif; }
-
-        .bg-primary { background-color: #ff9900; }
-        .text-primary { color: #ff9900; }
-        .border-primary { border-color: #ff9900; }
-        .bg-secondary { background-color: #00b33c; }
-        .text-secondary { color: #00b33c; }
-
-        html { scroll-behavior: smooth; }
-
-        .header-scrolled {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 
-                        0 2px 4px -2px rgba(0, 0, 0, 0.1);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        .icon-glow { transition: all 0.3s ease-in-out; }
-        .icon-glow-primary:hover { filter: drop-shadow(0 0 12px #ff9900); }
-        .icon-glow-secondary:hover { filter: drop-shadow(0 0 12px #00b33c); }
-
-        #home {
-            position: relative;
-            overflow: hidden;
-            height: 100vh;
-        }
-        #bg-video {
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transform: translate(-50%, -50%);
-            z-index: -2;
-        }
-        .video-overlay {
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: -1;
+        /* Hide scrollbar for cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
 
-        .founder-bg {
-            background: radial-gradient(circle at 0% 0%, rgba(255,153,0,0.1), transparent 35%), 
-                        radial-gradient(circle at 100% 100%, rgba(0,179,60,0.1), transparent 35%), 
-                        #ffffff;
+        ::-webkit-scrollbar-track {
+            background: #f8fafc;
         }
 
-        @property --angle {
-          syntax: '<angle>';
-          initial-value: 0deg;
-          inherits: false;
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
         }
-        .animated-border-box {
-            --angle: 0deg;
-            --border-size: 4px;
-            --border-color: conic-gradient(from var(--angle), #ffffff00, #ff9900, #00b33c, #ffffff00 50%);
-            position: relative;
-            background-color: #1a1a1a;
-            border-radius: 1.25rem;
-            padding: var(--border-size);
-            border: var(--border-size) solid transparent;
-            transition: --angle 1.5s linear;
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
         }
-        .animated-border-box:hover { --angle: 360deg; }
-        .animated-border-box::before {
-            content: '';
-            position: absolute;
-            inset: calc(-1 * var(--border-size));
-            background: var(--border-color);
-            z-index: -1;
-            border-radius: inherit;
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #ffb11b 0%, #ff9900 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        p {
+            text-align: justify;
         }
     </style>
 </head>
 
-<body class="bg-gray-100 text-gray-800">
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-primary-200 selection:text-primary-900">
 
-    <header id="header" class="bg-white/50 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 transition-shadow duration-300">
-        <div class="container mx-auto px-4 sm:px-6 py-2 flex justify-between items-center">
-            <a href="#home" class="flex items-center space-x-2">
-                <img src="https://i.ibb.co/zdGvfbv/Directior.png" alt="Logo" class="h-16 w-16 md:h-20 md:w-20 object-contain">
+    <!-- HEADER -->
+    <header id="header" class="absolute top-0 left-0 right-0 z-50 py-6 pointer-events-none">
+        <div class="container mx-auto px-4 flex justify-center">
+            <!-- Logo -->
+            <a href="#home" class="flex flex-col items-center group pointer-events-auto">
+                <img src="https://i.ibb.co/zdGvfbv/Directior.png" alt="MGSS Logo"
+                    class="h-16 w-16 md:h-20 md:w-20 object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-300">
+
             </a>
-
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#home" class="text-gray-600 hover:text-primary">Home</a>
-                <a href="#about" class="text-gray-600 hover:text-primary">About Us</a>
-                <a href="#services" class="text-gray-600 hover:text-primary">What We Offer</a>
-                <a href="#founder" class="text-gray-600 hover:text-primary">Founder's Message</a>
-                <a href="#contact" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-opacity-90 shadow-sm">Contact Us</a>
-            </nav>
-
-            <button id="mobile-menu-button" class="md:hidden text-gray-800">
-                <i data-feather="menu" class="w-6 h-6"></i>
-            </button>
-        </div>
-
-        <div id="mobile-menu" class="hidden md:hidden bg-white/80 backdrop-blur-md">
-            <a href="#home" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-200/50">Home</a>
-            <a href="#about" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-200/50">About Us</a>
-            <a href="#services" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-200/50">What We Offer</a>
-            <a href="#founder" class="block py-2 px-6 text-sm text-gray-600 hover:bg-gray-200/50">Founder's Message</a>
-            <a href="#contact" class="block py-4 px-6 bg-primary text-white text-center rounded-b-lg">Contact Us</a>
         </div>
     </header>
 
     <main>
 
-        <!-- HOME -->
-        <section id="home" class="flex items-center">
-            <video id="bg-video" autoplay loop muted playsinline>
-                <source src="https://videos.pexels.com/video-files/857091/857091-hd_1280_720_25fps.mp4" type="video/mp4">
+        <!-- HERO SECTION -->
+        <section id="home" class="relative min-h-[100svh] flex items-center pt-20 pb-16 overflow-hidden">
+            <!-- Background Video -->
+            <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover z-0">
+                <source src="https://videos.pexels.com/video-files/857091/857091-hd_1280_720_25fps.mp4"
+                    type="video/mp4">
             </video>
 
-            <div class="video-overlay"></div>
+            <!-- Premium Overlay Gradients -->
+            <div class="absolute inset-0 bg-slate-900/60 z-0 mix-blend-multiply"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/60 to-transparent z-0"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-transparent to-transparent z-0"></div>
 
-            <div class="container mx-auto px-6 relative z-10 pt-24">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
-                    <div class="text-center md:text-left">
-                        <h1 class="text-5xl font-extrabold text-white drop-shadow-lg">
-                            Power Your Future with <span class="text-primary">Solar Energy</span>
+                    <!-- Text Content -->
+                    <div class="lg:col-span-7 text-center lg:text-left pt-10 lg:pt-0">
+                        <div
+                            class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full glass-card mb-6 border border-white/10">
+                            <span class="flex h-2 w-2 relative">
+                                <span
+                                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-secondary-500"></span>
+                            </span>
+                            <span class="text-xs font-semibold uppercase tracking-wider text-white">Leading Solar
+                                Provider</span>
+                        </div>
+
+                        <h1
+                            class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight leading-[1.1] mb-6">
+                            Power Your Future With <br class="hidden lg:block" />
+                            <span class="text-gradient drop-shadow-sm">Clean Energy.</span>
                         </h1>
-                        <p class="mt-6 text-lg text-gray-200">
-                            Harness the sun's power with MGSS. We provide top-tier solar installations.
+
+                        <p
+                            class="text-base sm:text-lg lg:text-xl text-slate-300 max-w-2xl mx-auto lg:mx-0 mb-10 leading-relaxed font-medium">
+                            Join the sustainable revolution. MGSS delivers state-of-the-art solar installations that
+                            drastically reduce your energy costs while protecting the planet.
                         </p>
 
-                        <a href="#services" class="mt-8 inline-block bg-secondary text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-opacity-90 transform hover:scale-105">
-                            Explore Our Solutions
-                        </a>
+                        <div
+                            class="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-5">
+                            <a href="#services"
+                                class="w-full sm:w-auto inline-flex justify-center items-center px-8 py-4 text-base font-bold text-slate-900 bg-white hover:bg-slate-50 rounded-full shadow-lg hover:-translate-y-1 transition-all duration-300">
+                                Explore Solutions
+                            </a>
+                            <a href="contact.html"
+                                class="w-full sm:w-auto inline-flex justify-center items-center px-8 py-4 text-base font-bold text-white bg-white/10 hover:bg-white/20 border border-white/20 backdrop-blur-md rounded-full hover:-translate-y-1 transition-all duration-300">
+                                <i data-feather="phone-call" class="w-4 h-4 mr-2"></i> Book Consultation
+                            </a>
+                        </div>
+
+                        <div
+                            class="mt-12 flex items-center justify-center lg:justify-start space-x-6 text-slate-400 text-sm font-medium">
+                            <div class="flex items-center"><i data-feather="check-circle"
+                                    class="w-4 h-4 text-secondary-400 mr-2"></i> Quality Assured</div>
+                            <div class="flex items-center"><i data-feather="check-circle"
+                                    class="w-4 h-4 text-secondary-400 mr-2"></i> Expert Team</div>
+                        </div>
                     </div>
 
-                    <!-- Calculator -->
-                    <div class="bg-black/40 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-white/20">
-                        <h2 class="text-2xl font-bold text-center text-secondary mb-2">Solar Savings Calculator</h2>
-                        <p class="text-center text-primary mb-6">See how much you can save!</p>
+                    <!-- Calculator Widget (Mobile-Optimized) -->
+                    <div class="lg:col-span-5 relative max-w-md mx-auto lg:max-w-full w-full">
+                        <div class="relative rounded-3xl p-6 sm:p-8 glass-card bg-white/5 backdrop-blur-2xl border border-white/20 shadow-[0_0_30px_rgba(255,153,0,0.2)] ring-1 ring-primary-500/30">
 
-                        <label class="block text-sm font-medium text-gray-200">Your Monthly Electricity Bill (₹)</label>
-                        <input type="number" id="monthlyBill" class="mt-1 block w-full rounded-md bg-white/20 text-white">
+                            <h2 class="text-xl sm:text-2xl font-bold text-white mb-2 flex items-center">
+                                <i data-feather="zap" class="w-5 h-5 text-primary-400 mr-2"></i> Savings Estimator
+                            </h2>
+                            <p class="text-sm text-slate-300 mb-6 font-medium">Calculate your potential 30-year savings
+                                instantly.</p>
 
-                        <button id="calculateBtn" class="mt-6 w-full bg-primary text-white font-bold py-3 rounded-lg flex items-center justify-center space-x-2">
-                            <i data-feather="sun" class="w-5 h-5"></i><span>Calculate Savings</span>
-                        </button>
+                            <div class="space-y-5">
+                                <div>
+                                    <label
+                                        class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">Monthly
+                                        Electricity Bill (₹)</label>
+                                    <div class="relative">
+                                        <div
+                                            class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                            <span class="text-slate-400 font-semibold">₹</span>
+                                        </div>
+                                        <input type="number" id="monthlyBill" placeholder="e.g., 5000"
+                                            class="block w-full pl-8 pr-4 py-3.5 bg-slate-900/50 border border-white/10 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all font-medium">
+                                    </div>
+                                </div>
 
-                        <div id="calculatorResult" class="mt-6 text-center hidden">
-                            <div class="bg-green-900/30 p-6 rounded-lg border border-secondary">
-                                <p class="text-sm text-secondary font-semibold">ESTIMATED REQUIREMENT & SAVINGS</p>
-                                <p class="mt-2 text-xl font-bold text-white">You need a <span id="plantCapacity" class="text-secondary">0.0</span> kW Plant</p>
-                                <p class="mt-2 text-gray-200">Save approx. <span id="totalSavings" class="font-bold text-white">₹0</span> over 30 years!</p>
+                                <button id="calculateBtn"
+                                    class="w-full relative group overflow-hidden bg-primary-600 text-white font-bold py-4 rounded-xl transition-all hover:bg-primary-500 hover:shadow-[0_0_20px_rgba(255,153,0,0.4)]">
+                                    <span class="relative z-10 flex items-center justify-center">
+                                        Calculate Now <i data-feather="arrow-right"
+                                            class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                                    </span>
+                                </button>
+
+                                <!-- Results Area -->
+                                <div id="calculatorResult"
+                                    class="hidden mt-4 pt-4 border-t border-white/10 transition-all duration-500">
+                                    <div class="bg-secondary-500/10 border border-secondary-500/20 rounded-2xl p-5">
+                                        <div class="flex justify-between items-end mb-4">
+                                            <div>
+                                                <p
+                                                    class="text-[10px] font-bold uppercase tracking-wider text-secondary-400">
+                                                    Required Plant Size</p>
+                                                <p class="text-2xl font-extrabold text-white mt-1"><span
+                                                        id="plantCapacity">0.0</span> <span
+                                                        class="text-sm font-medium text-slate-300">kW</span></p>
+                                            </div>
+                                            <i data-feather="sun" class="w-8 h-8 text-secondary-400 opacity-50"></i>
+                                        </div>
+                                        <div class="bg-slate-900/50 rounded-xl p-4">
+                                            <p class="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                                                Estimated 30-Year Savings</p>
+                                            <p class="text-3xl font-extrabold text-primary-400 mt-1" id="totalSavings">
+                                                ₹0</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-center text-[10px] text-slate-400 mt-3">*This is a rough estimate.
+                                        Contact us for a precise quote.</p>
+                                </div>
                             </div>
-                            <p class="text-xs text-gray-400 mt-4">*Approximate estimate.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- ABOUT -->
-        <section id="about" class="py-24 bg-white">
-            <div class="container mx-auto px-6 grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-4xl font-bold text-gray-900">About <span class="text-primary">MGSS</span></h2>
-                    <p class="mt-4 text-gray-600">
-                        MGSS delivers clean, high-quality solar power solutions for homes and industries.
-                    </p>
-                    <p class="mt-4 text-gray-600">
-                        We handle everything from consultation & design to installation & maintenance.
-                    </p>
-
-                    <div class="mt-8 flex space-x-8">
-                        <div class="flex items-center space-x-3">
-                            <div class="bg-green-100 p-3 rounded-full"><i data-feather="award" class="text-secondary"></i></div>
-                            <div><p class="font-bold">Quality Assured</p></div>
-                        </div>
-
-                        <div class="flex items-center space-x-3">
-                            <div class="bg-orange-100 p-3 rounded-full"><i data-feather="users" class="text-primary"></i></div>
-                            <div><p class="font-bold">Expert Team</p></div>
-                        </div>
-                    </div>
-                </div>
-
-                <img src="https://images.pexels.com/photos/8853500/pexels-photo-8853500.jpeg" class="rounded-2xl shadow-xl">
-            </div>
-        </section>
-
-        <!-- SERVICES -->
-        <section id="services" class="py-24 bg-gray-50">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold text-gray-900">What We Offer</h2>
-                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Tailored solar solutions built for your needs.</p>
-
-                <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-2 transition">
-                        <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                            <i data-feather="home"></i>
-                        </div>
-                        <h3 class="mt-6 text-xl font-bold">Residential Solar</h3>
-                        <p class="mt-2 text-gray-600">Reduce electricity bills with rooftop solar.</p>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-2 transition">
-                        <div class="bg-secondary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                            <i data-feather="briefcase"></i>
-                        </div>
-                        <h3 class="mt-6 text-xl font-bold">Industrial Projects</h3>
-                        <p class="mt-2 text-gray-600">Reliable solar systems for factories & warehouses.</p>
-                    </div>
-
-                    <div class="bg-white p-8 rounded-xl shadow-lg hover:-translate-y-2 transition">
-                        <div class="bg-primary text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto">
-                            <i data-feather="grid"></i>
-                        </div>
-                        <h3 class="mt-6 text-xl font-bold">On-Grid & Off-Grid</h3>
-                        <p class="mt-2 text-gray-600">Choose grid-tied or independent solar options.</p>
-                    </div>
+        <!-- ABOUT LOGOS / SOCIAL PROOF (Optional but adds credibility) -->
+        <section class="py-10 bg-white border-b border-slate-100">
+            <div class="container mx-auto px-4 text-center">
+                <p class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">Trusted By Businesses &
+                    Homeowners Across Rajasthan</p>
+                <div
+                    class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+                    <!-- Placeholder icons representing industry trust -->
+                    <i data-feather="shield" class="w-8 h-8 text-slate-800"></i>
+                    <i data-feather="award" class="w-8 h-8 text-slate-800"></i>
+                    <i data-feather="trending-up" class="w-8 h-8 text-slate-800"></i>
+                    <i data-feather="sun" class="w-8 h-8 text-slate-800"></i>
                 </div>
             </div>
         </section>
 
-        <!-- FOUNDER -->
-        <section id="founder" class="py-24 bg-gray-100">
-            <div class="container mx-auto px-6">
-                <div class="founder-bg rounded-2xl shadow-xl overflow-hidden grid md:grid-cols-5">
-
-                    <div class="md:col-span-2">
-                         <img src="https://i.ibb.co/fzQNVKM6/DSC00396-1.jpg" class="w-full h-full object-cover">
-                    </div>
-
-                    <div class="md:col-span-3 p-12">
-                        <h2 class="text-4xl font-bold">Founder's Message</h2>
-
-                        <blockquote class="mt-4 text-lg text-gray-700 italic">
-                            "Our mission is not just installing solar panels, but empowering communities with sustainable energy choices."
-                        </blockquote>
-
-                        <p class="mt-6 font-bold text-xl text-primary">Rajneesh Kulshreshtha</p>
-                        <p class="text-gray-500">Founder, MGSS</p>
-                        <p class="text-gray-500 text-sm">+91 97854 00270</p>
-                    </div>
-                </div>
+        <!-- ABOUT SECTION -->
+        <section id="about" class="py-24 bg-white relative overflow-hidden">
+            <div
+                class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-primary-50 rounded-full blur-3xl opacity-50 z-0">
             </div>
-        </section>
 
-        <!-- CLIENT VIDEO -->
-        <section id="client-video" class="py-24 bg-gray-50">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold text-gray-900">See What Our Clients Have to Say</h2>
-                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Watch a short video from one of our customers.</p>
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-                <div class="mt-12 max-w-4xl mx-auto">
-                    <div class="animated-border-box">
-                        <div class="aspect-video">
-                            <iframe src="https://www.youtube.com/embed/_kpa1EtQ8LU" class="rounded-xl w-full h-full"></iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+                    <!-- Images -->
+                    <div class="relative order-2 lg:order-1">
 
-        <!-- CONTACT -->
-        <section id="contact" class="py-24 bg-gray-50">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold text-gray-900">Get In Touch</h2>
-                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Ready to go solar? Contact us today.</p>
+                        <img src="https://images.pexels.com/photos/8853500/pexels-photo-8853500.jpeg"
+                            alt="Solar Installation"
+                            class="relative z-10 rounded-[2rem] shadow-2xl w-full object-cover aspect-[4/3] md:aspect-auto">
 
-                <div class="mt-12 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-                    <div class="space-y-8">
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-orange-100 p-3 rounded-full"><i data-feather="mail" class="text-primary"></i></div>
+                        <!-- Floating Badge -->
+                        <div
+                            class="absolute -bottom-6 -left-6 z-20 bg-white p-4 sm:p-6 rounded-2xl shadow-xl border border-slate-50 flex items-center space-x-4 animate-float">
+                            <div class="bg-secondary-100 text-secondary-600 p-3 rounded-full">
+                                <i data-feather="check-circle" class="w-6 h-6"></i>
+                            </div>
                             <div>
-                                <h3 class="text-lg font-semibold">Email Us</h3>
-                                <a href="mailto:gayatrisolars@gmail.com" class="text-primary">gayatrisolars@gmail.com</a>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-green-100 p-3 rounded-full"><i data-feather="map-pin" class="text-secondary"></i></div>
-                            <div>
-                                <h3 class="text-lg font-semibold">Headquarters</h3>
-                                <p class="text-gray-600">15/171 Malviya Nagar<br>Jaipur, Rajasthan</p>
-                            </div>
-                        </div>
-
-                        <div class="flex items-start space-x-4">
-                            <div class="bg-orange-100 p-3 rounded-full"><i data-feather="phone-call" class="text-primary"></i></div>
-                            <div>
-                                <h3 class="text-lg font-semibold">Call Us</h3>
-                                <p class="text-gray-600">Rajneesh: +91 9785400270</p>
-                                <p class="text-gray-600">Sales: +91 9024032963</p>
+                                <p class="text-2xl font-bold text-slate-900 leading-none">100%</p>
+                                <p class="text-xs font-semibold text-slate-500 uppercase tracking-wide mt-1">Client
+                                    Satisfaction</p>
                             </div>
                         </div>
                     </div>
 
-                    <div class="md:col-span-2 bg-white p-8 rounded-2xl shadow-lg">
-                        <form>
-                            <div class="grid md:grid-cols-2 gap-6">
-                                <input class="rounded-md border-gray-300" placeholder="Full Name">
-                                <input class="rounded-md border-gray-300" placeholder="Email Address">
+                    <!-- Text -->
+                    <div class="order-1 lg:order-2">
+                        <h2 class="text-sm font-bold text-primary-600 uppercase tracking-widest mb-3">About Us</h2>
+                        <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
+                            Pioneering <span
+                                class="text-transparent bg-clip-text bg-gradient-to-r from-secondary-500 to-secondary-700">Sustainable
+                                Energy</span> Solutions.
+                        </h3>
+                        <p class="text-lg text-slate-600 mb-6 font-medium leading-relaxed">
+                            MGSS delivers clean, high-quality solar power solutions for residential, commercial, and
+                            industrial sectors. We handle the entire lifecycle—from consultation and custom design to
+                            expert installation and lifetime maintenance.
+                        </p>
+
+                        <div class="space-y-6 mt-8">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div
+                                        class="w-12 h-12 bg-primary-50 rounded-xl flex items-center justify-center text-primary-600">
+                                        <i data-feather="cpu"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-5">
+                                    <h4 class="text-xl font-bold text-slate-900">Advanced Technology</h4>
+                                    <p class="mt-2 text-slate-600 leading-relaxed">We use top-tier, high-efficiency
+                                        panels and inverters to guarantee maximum yield.</p>
+                                </div>
                             </div>
 
-                            <input class="mt-6 w-full rounded-md border-gray-300" placeholder="Phone Number">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-1">
+                                    <div
+                                        class="w-12 h-12 bg-secondary-50 rounded-xl flex items-center justify-center text-secondary-600">
+                                        <i data-feather="users"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-5">
+                                    <h4 class="text-xl font-bold text-slate-900">Expert Engineering Team</h4>
+                                    <p class="mt-2 text-slate-600 leading-relaxed">Our certified professionals ensure a
+                                        seamless, hassle-free installation process.</p>
+                                </div>
+                            </div>
+                        </div>
 
-                            <textarea class="mt-6 w-full rounded-md border-gray-300" rows="4" placeholder="Message"></textarea>
+                        <div class="mt-10">
+                            <a href="#services"
+                                class="inline-flex items-center text-primary-600 font-bold hover:text-primary-700 group">
+                                Learn more about our process
+                                <i data-feather="arrow-right"
+                                    class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </a>
+                        </div>
+                    </div>
 
-                            <button class="mt-6 w-full bg-secondary text-white py-3 rounded-lg">Send Message</button>
-                        </button>
-                        </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES BENTO GRID -->
+        <section id="services" class="py-24 bg-slate-50 relative">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <h2 class="text-sm font-bold text-primary-600 uppercase tracking-widest mb-3">Our Expertise</h2>
+                    <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight">Tailored
+                        Solar Systems</h3>
+                    <p class="mt-4 text-lg text-slate-600 font-medium">Comprehensive solutions engineered specifically
+                        for your energy needs and architectural requirements.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+
+                    <!-- Card 1: Residential -->
+                    <div
+                        class="group bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl border border-slate-100 hover:border-primary-100 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-primary-50 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="relative z-10">
+                            <div
+                                class="w-16 h-16 bg-primary-50 text-primary-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary-600 group-hover:text-white transition-colors duration-300">
+                                <i data-feather="home" class="w-8 h-8"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-slate-900 mb-3">Residential Solar</h4>
+                            <p class="text-slate-600 leading-relaxed font-medium mb-6">Drastically reduce or eliminate
+                                your home electricity bills with sleek, high-efficiency rooftop solar installations.</p>
+                            <ul class="space-y-2 text-sm font-medium text-slate-700">
+                                <li class="flex items-center"><i data-feather="check"
+                                        class="w-4 h-4 text-secondary-500 mr-2"></i> Net Metering Support</li>
+                                <li class="flex items-center"><i data-feather="check"
+                                        class="w-4 h-4 text-secondary-500 mr-2"></i> Subsidy Guidance</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: Industrial -->
+                    <div
+                        class="group bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl border border-slate-100 hover:border-secondary-100 transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
+                        <div
+                            class="absolute top-0 right-0 w-32 h-32 bg-secondary-50 rounded-bl-full -mr-16 -mt-16 transition-transform group-hover:scale-110">
+                        </div>
+                        <div class="relative z-10">
+                            <div
+                                class="w-16 h-16 bg-secondary-50 text-secondary-600 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-secondary-600 group-hover:text-white transition-colors duration-300">
+                                <i data-feather="briefcase" class="w-8 h-8"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-slate-900 mb-3">Commercial & Industrial</h4>
+                            <p class="text-slate-600 leading-relaxed font-medium mb-6">Large-scale, robust solar systems
+                                designed to power factories, warehouses, and commercial complexes reliably.</p>
+                            <ul class="space-y-2 text-sm font-medium text-slate-700">
+                                <li class="flex items-center"><i data-feather="check"
+                                        class="w-4 h-4 text-primary-500 mr-2"></i> Tax Depreciation Benefits</li>
+                                <li class="flex items-center"><i data-feather="check"
+                                        class="w-4 h-4 text-primary-500 mr-2"></i> High ROI Architecture</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Grid Options -->
+                    <div
+                        class="group bg-slate-900 rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-gradient-to-br from-slate-800 to-slate-900 z-0"></div>
+                        <!-- Decorative mesh or pattern can go here -->
+                        <div class="relative z-10">
+                            <div
+                                class="w-16 h-16 bg-white/10 backdrop-blur text-white rounded-2xl flex items-center justify-center mb-6">
+                                <i data-feather="grid" class="w-8 h-8"></i>
+                            </div>
+                            <h4 class="text-2xl font-bold text-white mb-3">On-Grid & Off-Grid</h4>
+                            <p class="text-slate-300 leading-relaxed font-medium mb-6">Choose between grid-tied systems
+                                for maximum savings or independent battery-backed setups for remote reliability.</p>
+                            <ul class="space-y-2 text-sm font-medium text-slate-300">
+                                <li class="flex items-center"><i data-feather="zap"
+                                        class="w-4 h-4 text-primary-400 mr-2"></i> Battery Storage Integration</li>
+                                <li class="flex items-center"><i data-feather="zap"
+                                        class="w-4 h-4 text-primary-400 mr-2"></i> Hybrid Solutions</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- FOUNDER SECTION -->
+        <section id="founder" class="py-24 bg-white relative">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-6xl mx-auto bg-slate-900 rounded-[2.5rem] overflow-hidden shadow-2xl relative">
+                    <!-- Subtle background glow inside the card -->
+                    <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+                        <div
+                            class="absolute -top-[50%] -left-[10%] w-[70%] h-[150%] bg-gradient-to-br from-primary-900/40 to-transparent transform rotate-12 blur-3xl">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-5 relative z-10">
+
+                        <div class="md:col-span-2 relative min-h-[300px] md:min-h-full">
+                            <!-- Using object-cover for perfect framing -->
+                            <img src="https://i.ibb.co/fzQNVKM6/DSC00396-1.jpg" alt="Rajneesh Kulshreshtha"
+                                class="absolute inset-0 w-full h-full object-cover">
+                            <div
+                                class="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent md:bg-gradient-to-r md:from-transparent md:via-slate-900/50 md:to-slate-900">
+                            </div>
+                        </div>
+
+                        <div class="md:col-span-3 p-10 sm:p-14 lg:p-20 flex flex-col justify-center">
+                            <i data-feather="message-square" class="w-10 h-10 text-primary-500 mb-6 opacity-50"></i>
+                            <h2 class="text-3xl font-extrabold text-white mb-6">A Vision for a Greener Tomorrow</h2>
+
+                            <blockquote class="text-xl sm:text-2xl text-slate-300 font-medium leading-relaxed mb-8">
+                                "Our mission extends beyond simply installing solar panels. We are dedicated to
+                                empowering communities and businesses with sustainable, intelligent energy choices that
+                                secure a better future for the next generation."
+                            </blockquote>
+
+                            <div>
+                                <p class="text-xl font-bold text-white tracking-wide">Rajneesh Kulshreshtha</p>
+                                <p class="text-primary-400 font-semibold uppercase tracking-wider text-sm mt-1">Founder,
+                                    MGSS</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- CLIENT VIDEO (Testimonial) -->
+        <section id="client-video" class="py-24 bg-slate-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-sm font-bold text-primary-600 uppercase tracking-widest mb-3">Success Stories</h2>
+                <h3 class="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-4">Hear From
+                    Our Clients</h3>
+                <p class="text-lg text-slate-600 font-medium max-w-2xl mx-auto mb-16">Real experiences from homeowners
+                    and businesses who made the switch to clean energy with MGSS.</p>
+
+                <div class="max-w-4xl mx-auto relative group">
+                    <!-- Decorative border glow that animates on hover -->
+                    <div
+                        class="absolute -inset-1 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-[2rem] blur opacity-30 group-hover:opacity-60 transition duration-500">
+                    </div>
+
+                    <div class="relative bg-slate-900 rounded-[1.5rem] p-2 sm:p-4 shadow-2xl">
+                        <div class="aspect-video rounded-xl overflow-hidden bg-black">
+                            <iframe src="https://www.youtube.com/embed/_kpa1EtQ8LU?rel=0" title="Client Testimonial"
+                                class="w-full h-full border-0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="py-20 bg-primary-600 relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10">
+            </div>
+            <div class="container mx-auto px-4 text-center relative z-10">
+                <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Ready to make the switch?</h2>
+                <p class="text-primary-100 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-10">Take the first step
+                    towards energy independence. Contact our experts for a free, no-obligation site assessment.</p>
+                <a href="contact.html"
+                    class="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-primary-900 bg-white rounded-full shadow-xl hover:bg-slate-50 hover:-translate-y-1 transition-all duration-300">
+                    Get Your Free Quote <i data-feather="arrow-right" class="w-5 h-5 ml-2"></i>
+                </a>
             </div>
         </section>
 
     </main>
 
-    <footer class="bg-gray-800 text-white">
-        <div class="container mx-auto px-6 py-8 grid md:grid-cols-3 gap-8">
-            <div>
-                <h3 class="font-bold">Maa Gayatri Solar Solutions</h3>
-                <p class="text-gray-400 text-sm mt-2">Your trusted partner for a sustainable future.</p>
-            </div>
-            <div class="text-center">
-                <h3 class="font-bold">Quick Links</h3>
-                <ul class="mt-2 text-sm">
-                    <li><a href="#about" class="text-gray-400 hover:text-white">About Us</a></li>
-                    <li><a href="#services" class="text-gray-400 hover:text-white">Services</a></li>
-                    <li><a href="#contact" class="text-gray-400 hover:text-white">Contact</a></li>
-                </ul>
-            </div>
-            <div class="md:text-right">
-                <h3 class="font-bold">Connect With Us</h3>
-                <div class="mt-2 flex space-x-4 md:justify-end">
-                    <a href="#" class="text-gray-400 hover:text-white"><i data-feather="facebook"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i data-feather="instagram"></i></a>
-                    <a href="#" class="text-gray-400 hover:text-white"><i data-feather="linkedin"></i></a>
-                </div>
-            </div>
-        </div>
-        <p class="text-center text-gray-500 text-sm py-6 border-t border-gray-700">
-            © 2024 Maa Gayatri Solar Solutions. All Rights Reserved.
-        </p>
-    </footer>
+    <!-- PREMIUM FOOTER -->
+    <footer class="bg-slate-900 text-slate-300 pt-20 pb-10 border-t border-slate-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
 
-    
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-3 gap-8 mb-6">
-                <!-- Company Info -->
-                <div>
-                    <h3 class="text-xl font-bold mb-4">MGSS</h3>
-                    <p class="text-gray-400 text-sm">Empowering communities with sustainable solar energy solutions.</p>
+                <!-- Brand -->
+                <div class="lg:col-span-1">
+                    <a href="#home" class="flex items-center space-x-2 mb-6">
+                        <!-- Make sure logo looks okay on dark bg, maybe add a white glow if it's dark -->
+                        <div class="bg-white p-2 rounded-xl">
+                            <img src="https://i.ibb.co/zdGvfbv/Directior.png" alt="Logo"
+                                class="h-10 w-10 object-contain">
+                        </div>
+                        <div>
+                            <h2 class="text-xl font-bold text-white leading-tight">MGSS</h2>
+                            <p class="text-[10px] uppercase tracking-widest text-primary-500 font-bold">Solar Solutions
+                            </p>
+                        </div>
+                    </a>
+                    <p class="text-slate-400 text-sm font-medium leading-relaxed mb-6">
+                        Empowering communities with sustainable, high-efficiency solar energy solutions. Your trusted
+                        partner for a greener future.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary-600 hover:text-white transition-colors">
+                            <i data-feather="facebook" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary-600 hover:text-white transition-colors">
+                            <i data-feather="instagram" class="w-4 h-4"></i>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:bg-primary-600 hover:text-white transition-colors">
+                            <i data-feather="linkedin" class="w-4 h-4"></i>
+                        </a>
+                    </div>
                 </div>
 
                 <!-- Quick Links -->
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                    <ul class="space-y-2">
-                        <li><a href="#home" class="text-gray-400 hover:text-white transition">Home</a></li>
-                        <li><a href="#about" class="text-gray-400 hover:text-white transition">About</a></li>
-                        <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
-                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    <h3 class="text-white font-bold mb-6 uppercase tracking-wider text-sm">Company</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home"
+                                class="text-slate-400 hover:text-white transition-colors flex items-center font-medium"><i
+                                    data-feather="chevron-right" class="w-4 h-4 mr-2 text-primary-500"></i> Home</a>
+                        </li>
+                        <li><a href="#about"
+                                class="text-slate-400 hover:text-white transition-colors flex items-center font-medium"><i
+                                    data-feather="chevron-right" class="w-4 h-4 mr-2 text-primary-500"></i> About Us</a>
+                        </li>
+                        <li><a href="#services"
+                                class="text-slate-400 hover:text-white transition-colors flex items-center font-medium"><i
+                                    data-feather="chevron-right" class="w-4 h-4 mr-2 text-primary-500"></i> Services</a>
+                        </li>
+                        <li><a href="#founder"
+                                class="text-slate-400 hover:text-white transition-colors flex items-center font-medium"><i
+                                    data-feather="chevron-right" class="w-4 h-4 mr-2 text-primary-500"></i> Founder's
+                                Message</a></li>
                     </ul>
                 </div>
 
-                <!-- Legal Links -->
+                <!-- Support -->
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Legal</h4>
-                    <ul class="space-y-2">
-                        <li><a href="terms-and-conditions.html" class="text-gray-400 hover:text-white transition">Terms & Conditions</a></li>
-                        <li><a href="privacy-policy.html" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition">Contact Us</a></li>
+                    <h3 class="text-white font-bold mb-6 uppercase tracking-wider text-sm">Support & Legal</h3>
+                    <ul class="space-y-3">
+                        <li><a href="contact.html"
+                                class="text-slate-400 hover:text-white transition-colors flex items-center font-medium"><i
+                                    data-feather="chevron-right" class="w-4 h-4 mr-2 text-primary-500"></i> Contact
+                                Us</a></li>
+                        <li><a href="privacy-policy.html"
+                                class="text-slate-400 hover:text-white transition-colors flex items-center font-medium"><i
+                                    data-feather="chevron-right" class="w-4 h-4 mr-2 text-primary-500"></i> Privacy
+                                Policy</a></li>
+                        <li><a href="terms-and-conditions.html"
+                                class="text-slate-400 hover:text-white transition-colors flex items-center font-medium"><i
+                                    data-feather="chevron-right" class="w-4 h-4 mr-2 text-primary-500"></i> Terms of
+                                Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-white font-bold mb-6 uppercase tracking-wider text-sm">Contact Info</h3>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i data-feather="map-pin" class="w-5 h-5 text-primary-500 mt-1 mr-3 flex-shrink-0"></i>
+                            <span class="text-slate-400 font-medium">15/171 Malviya Nagar<br>Jaipur, Rajasthan</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="phone" class="w-5 h-5 text-primary-500 mr-3 flex-shrink-0"></i>
+                            <a href="tel:+919785400270" class="text-slate-400 hover:text-white font-medium">+91 97854
+                                00270</a>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-feather="mail" class="w-5 h-5 text-primary-500 mr-3 flex-shrink-0"></i>
+                            <a href="mailto:gayatrisolars@gmail.com"
+                                class="text-slate-400 hover:text-white font-medium break-all">gayatrisolars@gmail.com</a>
+                        </li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-gray-700 pt-6 text-center">
-                <p class="text-gray-400 text-sm">© 2026 Maa Gayatri Solar Solutions. All rights reserved.</p>
+            <div
+                class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm font-medium text-slate-500">
+                <p>&copy; 2026 Maa Gayatri Solar Solutions. All rights reserved.</p>
+                <p class="mt-2 md:mt-0">Designed for a Sustainable Future.</p>
             </div>
         </div>
     </footer>
 
-<script>
+    <!-- INTERACTIVITY SCRIPT -->
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Initialize Feather Icons
             feather.replace();
 
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-            });
-
+            // Sticky Header Glass Effect on Scroll
             const header = document.getElementById('header');
-            window.addEventListener('scroll', () => {
-                header.classList.toggle('header-scrolled', window.scrollY > 10);
-            });
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 20) {
+                        header.classList.add('py-1');
+                        header.classList.remove('py-6');
+                    } else {
+                        header.classList.add('py-6');
+                        header.classList.remove('py-1');
+                    }
+                });
+            }
 
-            function animateValue(obj, start, end, duration) {
+            // Calculator Logic & Number Animation
+            function animateValue(obj, start, end, duration, prefix = '') {
                 let startTimestamp = null;
                 const step = (timestamp) => {
                     if (!startTimestamp) startTimestamp = timestamp;
                     const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                    const eased = progress < 0.5
-                        ? 4 * progress * progress * progress
-                        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
-                    obj.innerHTML = obj.id === 'totalSavings'
-                        ? '₹' + Math.floor(eased * (end - start) + start).toLocaleString('en-IN')
-                        : (eased * (end - start) + start).toFixed(1);
-                    if (progress < 1) requestAnimationFrame(step);
+                    // easeOutQuart
+                    const eased = 1 - Math.pow(1 - progress, 4);
+
+                    const currentVal = eased * (end - start) + start;
+
+                    if (obj.id === 'totalSavings') {
+                        obj.innerHTML = prefix + Math.floor(currentVal).toLocaleString('en-IN');
+                    } else {
+                        obj.innerHTML = currentVal.toFixed(1);
+                    }
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        // Ensure final value is exact
+                        if (obj.id === 'totalSavings') {
+                            obj.innerHTML = prefix + Math.floor(end).toLocaleString('en-IN');
+                        } else {
+                            obj.innerHTML = end.toFixed(1);
+                        }
+                    }
                 };
                 requestAnimationFrame(step);
             }
@@ -437,16 +715,27 @@
 
             calculateBtn.addEventListener('click', () => {
                 const bill = parseFloat(monthlyBillInput.value);
-                if (isNaN(bill) || bill <= 0) return alert('Enter a valid monthly bill.');
+                if (isNaN(bill) || bill <= 0) {
+                    // Simple shake animation class could be added here
+                    monthlyBillInput.classList.add('border-red-500');
+                    setTimeout(() => monthlyBillInput.classList.remove('border-red-500'), 1000);
+                    return;
+                }
 
+                // Solar Math Logic
                 const requiredKW = Math.ceil(((bill * 12) / 8 / 365 / 4) * 2) / 2;
                 const total = (bill * 12 * 30) - (requiredKW * 60000);
 
+                // Reveal Results
                 resultDiv.classList.remove('hidden');
+                resultDiv.classList.add('animate-fade-in-up'); // Tailwind doesn't have this by default unless added, but browser will just show it.
+
+                // Animate Numbers
                 animateValue(plantCapacity, 0, requiredKW, 1500);
-                animateValue(totalSavings, 0, total, 2000);
+                animateValue(totalSavings, 0, total, 2000, '₹');
             });
         });
     </script>
 </body>
+
 </html>
