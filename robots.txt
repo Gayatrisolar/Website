@@ -1,0 +1,46 @@
+# robots.txt for Maa Gayatri Solar Solutions (MGSS)
+# Domain: https://mgssindia.com/
+
+User-agent: *
+Allow: /
+
+# OpenAI Crawlers (SearchGPT & ChatGPT)
+User-agent: GPTBot
+Allow: /
+User-agent: OAI-SearchBot
+Allow: /
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity AI Crawler
+User-agent: PerplexityBot
+Allow: /
+
+# Anthropic Crawlers (Claude)
+User-agent: ClaudeBot
+Allow: /
+User-agent: anthropic-ai
+Allow: /
+
+# Google Search & Gemini / AI Overviews
+User-agent: Googlebot
+Allow: /
+User-agent: Google-Extended
+Allow: /
+
+# Microsoft Bing & Copilot
+User-agent: Bingbot
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl (Training dataset for many AI models)
+User-agent: CCBot
+Allow: /
+
+# Sitemap
+Sitemap: https://mgssindia.com/sitemap.xml
